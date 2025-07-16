@@ -1,0 +1,11 @@
+# Request
+string[] limb_names
+string[] eef_names
+
+---
+
+# Response
+bool success
+string message
+
+

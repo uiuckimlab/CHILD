@@ -1,0 +1,4 @@
+sim: mujoco
+env: mujoco
+task_name: base
+use_moveit_to_initialize: false

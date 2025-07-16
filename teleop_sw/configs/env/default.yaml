@@ -1,0 +1,4 @@
+sim: ros
+env: gazebo #TODO: Find a better name than env
+task_name: base
+use_moveit_to_initialize: true

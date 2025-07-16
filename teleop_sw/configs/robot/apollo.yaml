@@ -1,0 +1,145 @@
+mesh_dir: 'models/' # Default directory for meshes
+robot_cfg:
+  name: apollo
+  asset_cfg:
+    asset_dir: ${mesh_dir} # Directory for assets
+    urdf_path: 'models/apptronik_apollo/apptronik_apollo.urdf' # Path to the URDF file
+    xml_path: 'models/apptronik_apollo/apptronik_apollo.xml' # If you have xml file, specify the path here or just use urdf file here as well
+  ignore_collision_pairs: [] # List of collision pairs to ignore, use * for partial match
+  teleop_dt: 0.02
+  control_dt: 0.002 # Control loop frequency - 125Hz for PAPRAS
+  eef_type: null # Type of end effector: 'hand', 'power_gripper', 'parallel_gripper'
+  num_eefs: 4 # number of limbs (end effectors) - 1 for single arm, 2 for dual arm...
+  limb_joint_names:
+    left_leg:
+      - 'l_hip_ie'
+      - 'l_hip_aa'
+      - 'l_hip_fe'
+      - 'l_knee_fe'
+#      - 'left_ankle_pitch_joint'
+#      - 'left_ankle_roll_joint'
+    right_leg:
+      - 'r_hip_ie'
+      - 'r_hip_aa'
+      - 'r_hip_fe'
+      - 'r_knee_fe'
+#      - 'right_ankle_pitch_joint'
+#      - 'right_ankle_roll_joint'
+    left_arm:
+      - 'l_shoulder_aa'
+      - 'l_shoulder_ie'
+      - 'l_shoulder_fe'
+      - 'l_elbow_fe'
+      - 'l_wrist_roll'
+      - 'l_wrist_pitch'
+      - 'l_wrist_yaw'
+    right_arm:
+      - 'r_shoulder_aa'
+      - 'r_shoulder_ie'
+      - 'r_shoulder_fe'
+      - 'r_elbow_fe'
+      - 'r_wrist_roll'
+      - 'r_wrist_pitch'
+      - 'r_wrist_yaw'
+  hand_joint_names:  # No hand for this robot
+    left_leg: []
+    right_leg: []
+    left_arm: []
+    right_arm: []
+  max_joint_vel: 20.0 # Maximum joint velocity
+  world_link: 'world'
+  end_effector_link:
+    left_leg: l_foot_link
+    right_leg: r_foot_link
+    left_arm: left_arm/end_effector_link
+    right_arm: right_arm/end_effector_link
+  named_poses:
+    #TODO: maybe read this info from srdf file, but conditionally. If not found, use this info
+    init: [0,0,0,0,
+           0,0,0,0,
+           0,0,0,-1.57,0,0,0,
+           0,0,0,-1.57,0,0,0]
+  viewer_args:
+    mujoco:
+      azimuth: 172.7000000000001
+      distance: 2.6093796441399872
+      elevation: -28.550000000000004
+      lookat: [-0.21228273,  0.03259374, -0.11615278]
+    sapien:
+      width: 1510
+      height: 768
+      fovy: 1.57
+      near: 0.1
+      far: 100
+      pose:
+        pos: [ -0.94558, -0.128266, 1.77682 ]
+        quat: [ 0.937644, -0.000868946, 0.347589, 0.0023438 ]
+    isaacgym:
+      cam_pos: [1.41, -0.36, 0.58]
+      cam_target: [0.45, -0.23, 0.31]
+ik_cfg: # information for inverse kinematics. Use single limb model for each limb.
+  # the number of arms in the urdf file, the name of the robot does not matter, but order matters.
+  left_leg:
+    # chain of joint names from base to end effector
+    joint_names:
+      - 'l_hip_ie'
+      - 'l_hip_aa'
+      - 'l_hip_fe'
+      - 'l_knee_fe'
+    ee_link: l_foot_link
+    dt: 0.05
+    asset_dir: ${mesh_dir} # Directory for assets
+    urdf_path: ${robot_cfg.asset_cfg.urdf_path} # Path to the URDF file
+    ik_damping: 0.1
+    eps: 1e-3
+    base_link: l_hip_ie_link # base_link in the original urdf file,not the base_link in the ik model
+
+  right_leg:
+    joint_names:
+      - 'r_hip_ie'
+      - 'r_hip_aa'
+      - 'r_hip_fe'
+      - 'r_knee_fe'
+    ee_link: r_foot_link
+    dt: 0.05
+    asset_dir: ${mesh_dir} # Directory for assets
+    urdf_path: ${robot_cfg.asset_cfg.urdf_path} # Path to the URDF file
+    ik_damping: 0.1
+    eps: 1e-3
+    base_link: r_hip_ie_link # base_link in the original urdf file,not the base_link in the ik model
+
+  left_arm:
+    # chain of joint names from base to end effector
+    joint_names:
+      - 'l_shoulder_aa'
+      - 'l_shoulder_ie'
+      - 'l_shoulder_fe'
+      - 'l_elbow_fe'
+      - 'l_wrist_roll'
+      - 'l_wrist_pitch'
+      - 'l_wrist_yaw'
+    ee_link: left_arm/end_effector_link
+    dt: 0.05
+    asset_dir: ${mesh_dir} # Directory for assets
+    urdf_path: ${robot_cfg.asset_cfg.urdf_path} # Path to the URDF file
+    ik_damping: 0.1
+    eps: 1e-3
+    base_link: l_shoulder_ie_link # base_link in the original urdf file,not the base_link in the ik model
+
+  right_arm:
+    # chain of joint names from base to end effector
+    joint_names:
+      - 'r_shoulder_aa'
+      - 'r_shoulder_ie'
+      - 'r_shoulder_fe'
+      - 'r_elbow_fe'
+      - 'r_wrist_roll'
+      - 'r_wrist_pitch'
+      - 'r_wrist_yaw'
+    ee_link: right_arm/end_effector_link
+    dt: 0.05
+    asset_dir: ${mesh_dir} # Directory for assets
+    urdf_path: ${robot_cfg.asset_cfg.urdf_path} # Path to the URDF file
+    ik_damping: 0.1
+    eps: 1e-3
+    base_link: r_shoulder_ie_link # base_link in the original urdf file,not the base_link in the ik model

@@ -1,0 +1,78 @@
+mesh_dir: 'models/' # Default directory for meshes
+robot_cfg:
+  name: 'papras_7dof_spot'
+  asset_cfg:
+    asset_dir: ${mesh_dir} # Directory for assets
+    xml_path: 'models/papras_7dof_spot/spot_7dof.xml'
+    urdf_path: 'models/papras_7dof_spot/spot_7dof.urdf'
+  ignore_collision_pairs:
+    - [".*link2", ".*link1"]
+    - ['.*gripper_link', '.*gripper_sub_link']
+  workspace_radius: 0.70
+  teleop_dt: 0.02 # this will be overwritten by device_config
+  control_dt: 0.008
+  vp_init_pos_axis: 2
+  eef_type: 'parallel_gripper' # 'hand' or 'hand_gripper' or 'parallel_gripper'
+  lr_order: [0,1]
+  arm_dof: 7
+  hand_dof: 1
+  num_eefs: 2 # two arm
+  world_link: 'body'
+  limb_joint_names:
+    robot3: ['robot3/joint1', 'robot3/joint2', 'robot3/joint3', 'robot3/joint4', 'robot3/joint5', 'robot3/joint6','robot3/joint7']
+    robot4: ['robot4/joint1', 'robot4/joint2', 'robot4/joint3', 'robot4/joint4', 'robot4/joint5', 'robot4/joint6','robot4/joint7']
+  eef_joint_names:
+    robot3: ['robot3/gripper']
+    robot4: ['robot4/gripper']
+  max_joint_vel: 3.0
+  end_effector_link: ['robot3/end_effector_link', 'robot4/end_effector_link']
+  mimic_joints:
+    'robot3/gripper_sub':
+      joint: 'robot3/gripper'
+      multiplier: 1.0
+      offset: 0.0
+    'robot4/gripper_sub':
+      joint: 'robot4/gripper'
+      multiplier: 1.0
+      offset: 0.0
+  named_poses: # same order as ctrl_joint_names
+    init: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,  0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ready: [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+  viewer_args:
+    mujoco:
+        azimuth: 179
+        distance: 2.328
+        elevation: -23.6
+        lookat: [0.25, 0.08, 1.35]
+    sapien:
+      width: 1510
+      height: 768
+      fovy: 1.57
+      near: 0.1
+      far: 100
+      pose:
+        pos: [-0.94558, -0.128266, 1.77682]
+        quat: [0.937644, -0.000868946, 0.347589, 0.0023438]
+    isaacgym:
+      cam_pos: [1.51, -0.12, 1.94]
+      cam_target: [-0.52, -0.01, 0.86]
+
+ik_cfg:
+  robot3:
+    joint_names: ['robot1/joint1', 'robot1/joint2', 'robot1/joint3', 'robot1/joint4', 'robot1/joint5', 'robot1/joint6', 'robot1/joint7']
+    dt: 0.05
+    asset_dir: ${mesh_dir} # Directory for assets
+    urdf_path: 'models/papras_7dof_spot/papras_7dof.urdf'
+    ik_damping: 0.075
+    eps: 1e-3
+    ee_link: robot1/end_effector_link
+    base_link: robot3/link1
+  robot4:
+    joint_names: ['robot1/joint1', 'robot1/joint2', 'robot1/joint3', 'robot1/joint4', 'robot1/joint5', 'robot1/joint6', 'robot1/joint7']
+    dt: 0.05
+    asset_dir: ${mesh_dir} # Directory for assets
+    urdf_path: 'models/papras_7dof_spot/papras_7dof.urdf'
+    ik_damping: 0.075
+    eps: 1e-3
+    ee_link: robot1/end_effector_link
+    base_link: robot4/link1

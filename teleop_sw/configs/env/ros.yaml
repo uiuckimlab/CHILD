@@ -1,0 +1,4 @@
+sim: ros
+env: real
+task_name: base
+use_moveit_to_initialize: true
