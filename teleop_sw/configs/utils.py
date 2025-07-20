@@ -57,7 +57,7 @@ def sanity_check_device_config(device_config, robot_config, verbose=True):
 
     robot_name = robot_config.robot_cfg.name
 
-    if 'gello' in device_config.type:
+    if 'child' in device_config.type:
         if len(device_config.direct_mapping) == 0:
             device_config.direct_mapping = {}
             for leader_limb_name in device_config.limb_joint_names.keys():
