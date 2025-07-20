@@ -18,6 +18,8 @@
 - M2x6 screw x24
 - Female jumper wires x6
 
+### Miscillaneous
+- Wires
 Screws for leader assembly (included in XL330 servo box):
 - M2x6mm self tapping screw
 - M2x8mm self tapping screw

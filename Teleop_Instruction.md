@@ -24,10 +24,26 @@ colcon build --symlink-install
 - Setup python virtualenv
 ```
 cd ws_child/src/CHILD
-virtualenv venv_child -p python3.10
+virtualenv venv_child -p python3.8
 source venv_child/bin/activate
 cd teleop_sw
 pip install -r requirements.txt
+```
+If pip install shows "ERROR: could not find a version that satisfies the requirement libxml2" run:
+```
+pip install lxml --only-binary :all:
+pip install -r requirements.txt
+```
+Install unitree_sdk2_python from source
+```
+git clone https://github.com/unitreerobotics/unitree_sdk2_python.git
+cd unitree_sdk2_python
+pip3 install -e .
+```
+Update the IP addresses on lines 11 and 12 of the cycloneds.xml file to match G1 and CHILD
+```
+<Peer address="xx.x.xx.xxx"/>
+<Peer address="xx.x.xx.xxx"/>
 ```
 
 
