@@ -44,7 +44,7 @@ class BaseConfig:
         print_color("-------Configuration-------", color='light_green', attrs=['bold'])
         print(f"🎮 Controller: {args.device}")
         print(f"🤖 Robot: {args.robot}")
-        print(f"🌏 Env: {args.env}")
+        #print(f"🌏 Env: {args.env}")
         print_color("---------------------------", color='light_green', attrs=['bold'])
 
         override_config = OmegaConf.load(f'configs/robot/{args.robot}.yaml')

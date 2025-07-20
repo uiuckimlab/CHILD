@@ -8,7 +8,8 @@
         </General>
         <Discovery>
           <Peers>
-            <Peer address="10.1.10.15"/>
+		  <Peer address="xx.x.xx.xxx"/>
+		<Peer address="xx.x.xx.xxx"/>
           </Peers>
         </Discovery>       
         <Internal>
