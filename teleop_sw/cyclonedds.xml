@@ -8,8 +8,8 @@
         </General>
         <Discovery>
           <Peers>
-		  <Peer address="xx.x.xx.xxx"/>
-		<Peer address="xx.x.xx.xxx"/>
+		        <Peer address="xx.x.xx.xxx"/>
+		        <Peer address="xx.x.xx.xxx"/>
           </Peers>
         </Discovery>       
         <Internal>
