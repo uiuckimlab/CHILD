@@ -1,0 +1,139 @@
+# This config file is used by ros2_control
+/**:
+  controller_manager:
+    ros__parameters:
+      update_rate: 400  # Hz
+      thread_priority: 99
+
+      joint_state_broadcaster:
+        type: joint_state_broadcaster/JointStateBroadcaster
+
+      feedback_controller:
+        type: feedback_controller/FeedbackController
+
+      # spring_actuator_controller:
+      #   type: spring_actuator_controller/SpringActuatorController
+
+      # joint_trajectory_command_broadcaster:
+      #   type: joint_trajectory_command_broadcaster/JointTrajectoryCommandBroadcaster
+
+/**:
+  feedback_controller:
+    ros__parameters:
+      joints:
+        - right_hip_pitch_joint
+        - right_hip_roll_joint
+        - right_hip_yaw_joint
+        - right_knee_joint
+        - left_hip_pitch_joint
+        - left_hip_roll_joint
+        - left_hip_yaw_joint
+        - left_knee_joint
+        - right_shoulder_pitch_joint
+        - right_shoulder_roll_joint
+        - right_shoulder_yaw_joint
+        - right_elbow_joint
+        - right_wrist_roll_joint
+        - right_wrist_pitch_joint
+        - right_wrist_yaw_joint
+        - left_shoulder_pitch_joint
+        - left_shoulder_roll_joint
+        - left_shoulder_yaw_joint
+        - left_elbow_joint
+        - left_wrist_roll_joint
+        - left_wrist_pitch_joint
+        - left_wrist_yaw_joint
+        - left/gripper
+        - right/gripper
+      init_pose:
+        - 0.0 # right_hip_pitch_joint
+        - 0.0 # right_hip_roll_joint
+        - 0.0 # right_hip_yaw_joint
+        - 0.0 # right_knee_joint
+        - 0.0 # left_hip_pitch_joint
+        - 0.0 # left_hip_roll_joint
+        - 0.0 # left_hip_yaw_joint
+        - 0.0 # left_knee_joint
+        - 0.0 # right_shoulder_pitch_joint
+        - 0.0 # right_shoulder_roll_joint
+        - 0.0 # right_shoulder_yaw_joint
+        - 0.8 # right_elbow_joint
+        - 0.0 # right_wrist_roll_joint
+        - 0.0 # right_wrist_pitch_joint
+        - 0.0 # right_wrist_yaw_joint
+        - 0.0 # left_shoulder_pitch_joint
+        - 0.0 # left_shoulder_roll_joint
+        - 0.0 # left_shoulder_yaw_joint
+        - 0.8 # left_elbow_joint
+        - 0.0 # left_wrist_roll_joint
+        - 0.0 # left_wrist_pitch_joint
+        - 0.0 # left_wrist_yaw_joint
+        - -1.5 # left/gripper
+        - 2.0 # right/gripper
+      Kp:
+        - 0.04 # right_hip_pitch_joint
+        - 0.04 # right_hip_roll_joint
+        - 0.04 # right_hip_yaw_joint
+        - 0.03 # right_knee_joint
+        - 0.04 # left_hip_pitch_joint
+        - 0.04 # left_hip_roll_joint
+        - 0.04 # left_hip_yaw_joint
+        - 0.03 # left_knee_joint
+        - 0.02 # right_shoulder_pitch_joint
+        - 0.02 # right_shoulder_roll_joint
+        - 0.02 # right_shoulder_yaw_joint
+        - 0.01 # right_elbow_joint
+        - 0.000 # right_wrist_roll_joint
+        - 0.000 # right_wrist_pitch_joint
+        - 0.000 # right_wrist_yaw_joint
+        - 0.02 # left_shoulder_pitch_joint
+        - 0.02 # left_shoulder_roll_joint
+        - 0.02 # left_shoulder_yaw_joint
+        - 0.01 # left_elbow_joint
+        - 0.000 # left_wrist_roll_joint
+        - 0.000 # left_wrist_pitch_joint
+        - 0.000 # left_wrist_yaw_joint
+        - 0.02 # left/gripper
+        - 0.02 # right/gripper
+
+      command_interfaces:
+        - effort
+      state_interfaces:
+        - position
+        - velocity
+
+
+# /**:
+#   spring_actuator_controller:
+#     ros__parameters:
+#       joints:
+#         - rh_r1_joint
+#       command_interfaces:
+#         - effort
+#       state_interfaces:
+#         - position
+#         - velocity
+
+# /**:
+#   joint_trajectory_command_broadcaster:
+#     ros__parameters:
+#       joints:
+#         - joint1
+#         - joint2
+#         - joint3
+#         - joint4
+#         - joint5
+#         - joint6
+#         - rh_r1_joint
+#       interfaces:
+#         - position
+#       reverse_joints:
+#         - rh_r1_joint
+#       offsets:
+#         - 0.0
+#         - 0.0
+#         - 0.0
+#         - 0.0
+#         - 0.0
+#         - 0.0
+#         - 0.2
