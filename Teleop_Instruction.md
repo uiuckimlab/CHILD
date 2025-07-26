@@ -100,8 +100,9 @@ ssh papras@$CHILD_WIFI_ADDRESS
 
     - If there is not, 
 
-        -  ```shell
-    docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb --env=DISPLAY --volume="/etc/group:/etc/group:ro" --volume="/etc/passwd:/etc/passwd:ro" --volume="/etc/shadow:/etc/shadow:ro" --volume="/etc/sudoers.d:/etc/sudoers.d:ro" --net host -v /home:/home -v ~/Docker/hosts:/etc/hosts -v ~/shared:/home/usr/ papras-ros-humble
+      ```shell
+        docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb --env=DISPLAY --volume="/etc/group:/etc/group:ro" --volume="/etc/passwd:/etc/passwd:ro" --volume="/etc/shadow:/etc/shadow:ro" --volume="/etc/sudoers.d:/etc/sudoers.d:ro" --net host -v /home:/home -v ~/Docker/hosts:/etc/hosts -v ~/shared:/home/usr/ papras-ros-humble
+      ```
 
 - Setup ROS env
 
