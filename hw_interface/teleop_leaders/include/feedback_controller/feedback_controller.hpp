@@ -100,6 +100,10 @@
   // Set base position
   std::vector<double> base_joint_positions_;
   std::vector<double> base_joint_kp_;
+  // Set null space position
+  std::vector<double> null_joint_positions_;
+  std::vector<double> null_joint_kp_;
+
 
   std::string formatVector(const std::vector<double> & vec);
 
@@ -140,10 +144,6 @@
   InterfaceReferences<hardware_interface::LoanedStateInterface> joint_state_interface_;
 
   std::vector<std::string> joint_names_;
-  // 
-  std::vector<double> joint_init_pose_;
-  std::vector<double> Kp_;
-  
   size_t n_joints_;
 
   std::vector<double> joint_positions_;

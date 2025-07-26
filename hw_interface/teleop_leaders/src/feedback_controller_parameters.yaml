@@ -4,6 +4,35 @@ feedback_controller:
     default_value: "robot_description",
     description: "Name of the robot description parameter in the parameter server"
   }
+
+  limb_names: {
+    type: string_array,
+    default_value: ['arm1'],
+    description: "Names of the limbs to control",
+    read_only: true,
+    validation: {
+      unique<>: null,
+    }
+  }
+  base_links: {
+    type: string_array,
+    default_value: ['robot1/base_link'],
+    description: "Base links of the robot",
+    read_only: true,
+    validation: {
+      unique<>: null,
+    }
+  }
+  end_effector_links: {
+    type: string_array,
+    default_value: ['robot1/end_effector_link'],
+    description: "End effector links of the robot",
+    read_only: true,
+    validation: {
+      unique<>: null,
+    }
+  }
+
   joints: {
     type: string_array,
     default_value: ['robot1/joint1', 'robot1/joint2', 'robot1/joint3', 'robot1/joint4', 'robot1/joint5', 'robot1/joint6','robot1/joint7'],
@@ -13,14 +42,20 @@ feedback_controller:
       unique<>: null,
     }
   }
-
+  
   init_pose: {
     type: double_array,
     default_value: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
     description: "Proportional gains for each joint, represented as a YAML string"
   }
 
-  Kp: {
+  BaseKp: {
+    type: double_array,
+    default_value: [0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02],
+    description: "Proportional gains for each joint, represented as a YAML string"
+  }
+
+  NullKp: {
     type: double_array,
     default_value: [0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02],
     description: "Proportional gains for each joint, represented as a YAML string"
@@ -46,44 +81,4 @@ feedback_controller:
     validation: {
       unique<>: null,
     }
-  }
-  unloaded_effort_offsets: {
-    type: double_array,
-    default_value: [0.3, 0.1, 0.1, 0.02, 0.015, 0.015],
-    description: "Effort offsets added to actuator control commands when below threshold"
-  }
-  unloaded_effort_thresholds: {
-    type: double_array,
-    default_value: [0.05, 0.1, 0.1, 0.02, 0.012, 0.012],
-    description: "Threshold values below which unloaded_effort_offsets are added to control commands"
-  }
-  kinetic_friction_scalars: {
-    type: double_array,
-    default_value: [0.4, 0.8, 0.8, 0.1, 0.1, 0.1, 0.1],
-    description: "Scaling factors for kinetic friction"
-  }
-  static_friction_scalars: {
-    type: double_array,
-    default_value: [0.05, 0.1, 0.1, 0.1, 0.1, 0.1,0.1,0.1],
-    description: "Scaling factors for static friction compensation (dithering)"
-  }
-  static_friction_velocity_thresholds: {
-    type: double_array,
-    default_value: [0.015, 0.015, 0.015, 0.3, 0.3, 0.3,0.1,0.1],
-    description: "Velocity thresholds for static friction compensation"
-  }
-  torque_scaling_factors: {
-    type: double_array,
-    default_value: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
-    description: "Scaling factors for calculated torques"
-  }
-  kinetic_friction_torque_scalars: {
-    type: double_array,
-    default_value: [2.0, 3.0, 2.0, 2.0, 2.0, 2.0, 2.0],
-    description: "Scaling factors for kinetic friction based on torque magnitude"
-  }
-  friction_compensation_velocity_thresholds: {
-    type: double_array,
-    default_value: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
-    description: "Velocity thresholds for kinetic friction compensation"
   }

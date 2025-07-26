@@ -70,8 +70,6 @@ controller_interface::return_type FeedbackController::update(
   assign_point_from_interface(joint_positions_, joint_state_interface_[0]);
   assign_point_from_interface(joint_velocities_, joint_state_interface_[1]);
 
-  // Create KDL objects for computation
-  KDL::TreeIdSolver_RNE idsolver(tree_, KDL::Vector(0, 0, -9.81));
   KDL::JntArray q(joint_names_.size());
   KDL::JntArray q_dot(joint_names_.size());
   KDL::JntArray torques(joint_names_.size());
@@ -82,29 +80,37 @@ controller_interface::return_type FeedbackController::update(
     q_dot(i) = joint_velocities_[i];
   }
 
-
+  // Base Pose Feedback
   std::string torques_str = "===================\n";
   for (size_t i = 0; i < joint_names_.size(); ++i) {
     if (i >= joint_names_.size()) {
       continue;
     }
     std::string joint_name = joint_names_[i];
-    double diff = joint_init_pose_[i] - q(i);
+    double diff = base_joint_positions_[i] - q(i);
     torques(i) = diff;
 
     torques(i) = std::max(-1.0, torques(i));
     torques(i) = std::min(torques(i), 1.0);
-    torques(i) = torques(i) * Kp_[i];
+    torques(i) = torques(i) * base_joint_kp_[i];
 
-    torques_str += "" + joint_name + ": base: " + std::to_string(joint_init_pose_[i]) +
-      ", joint: " +  std::to_string(q(i)) + ", diff: " + std::to_string(q(i) - joint_init_pose_[i]) +
+    torques_str += "" + joint_name + ": base: " + std::to_string(base_joint_positions_[i]) +
+      ", joint: " +  std::to_string(q(i)) + ", diff: " + std::to_string(q(i) - base_joint_positions_[i]) +
       ", torque: " + std::to_string(torques(i)) + "\n";
+
+
+
+
+
+
+
+
 
     joint_command_interface_[0][i].get().set_value(torques(i));
   }
 
   // Print the torques
-  // RCLCPP_INFO(get_node()->get_logger(), "%s", torques_str.c_str());
+  //RCLCPP_INFO(get_node()->get_logger(), "%s", torques_str.c_str());
 
   dither_switch_ = !dither_switch_;  // Flip the dither switch
 
@@ -154,8 +160,8 @@ controller_interface::CallbackReturn FeedbackController::on_configure(
   dof_ = params_.joints.size();
   joint_positions_.resize(dof_);
   joint_velocities_.resize(dof_);
-  joint_init_pose_.resize(dof_);
-  Kp_.resize(dof_);
+  base_joint_positions_.resize(dof_);
+  base_joint_kp_.resize(dof_);
 
   if (params_.joints.empty()) {
     // TODO(destogl): is this correct? Can we really move-on if no joint names are not provided?
@@ -168,9 +174,9 @@ controller_interface::CallbackReturn FeedbackController::on_configure(
   std::string init_pose_str = "";
   for (size_t index = 0; index < joint_names_.size(); ++index) {
     std::string joint_name = joint_names_[index];
-    joint_init_pose_[index] = params_.init_pose[index];
-    Kp_[index] = params_.Kp[index];
-    init_pose_str += joint_name + ": " + std::to_string(joint_init_pose_[index]) + ", ";
+    base_joint_positions_[index] = params_.init_pose[index];
+    base_joint_kp_[index] = params_.BaseKp[index];
+    init_pose_str += joint_name + ": " + std::to_string(base_joint_positions_[index]) + ", ";
   }
   RCLCPP_INFO(logger, "Joint init pose: %s", init_pose_str.c_str());
 
@@ -317,7 +323,7 @@ std::string FeedbackController::formatVector(const std::vector<double> & vec)
 //     auto it = std::find(request->joint_state.name.begin(), request->joint_state.name.end(), joint_names_[i]);
 //     if (it != request->joint_state.name.end()) {
 //       size_t index = static_cast<size_t>(std::distance(request->joint_state.name.begin(), it));
-//       joint_init_pose_[i] = static_cast<double>(request->joint_state.position.at(index));
+//       base_joint_positions_[i] = static_cast<double>(request->joint_state.position.at(index));
 //       Kp_[i] = static_cast<double>(request->joint_state.velocity.at(index));
 //     } else {
 //       RCLCPP_ERROR(get_node()->get_logger(), "Joint name %s not found in feedback message.", joint_names_[i].c_str());
@@ -334,8 +340,8 @@ void FeedbackController::set_base_pose_callback(const sensor_msgs::msg::JointSta
     auto it = std::find(msg->name.begin(), msg->name.end(), joint_names_[i]);
     if (it != msg->name.end()) {
       size_t index = static_cast<size_t>(std::distance(msg->name.begin(), it));
-      joint_init_pose_[i] = static_cast<double>(msg->position.at(index));
-      Kp_[i] = static_cast<double>(msg->velocity.at(index));
+      base_joint_positions_[i] = static_cast<double>(msg->position.at(index));
+      base_joint_kp_[i] = static_cast<double>(msg->velocity.at(index));
     } 
   }
 
