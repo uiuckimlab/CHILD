@@ -46,19 +46,25 @@ feedback_controller:
   init_pose: {
     type: double_array,
     default_value: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-    description: "Proportional gains for each joint, represented as a YAML string"
+    description: "Base pose for the robot"
   }
 
   BaseKp: {
     type: double_array,
     default_value: [0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02],
-    description: "Proportional gains for each joint, represented as a YAML string"
+    description: "Proportional gains for each joint - for base joint feedback"
+  }
+
+  nullspace_pose: {
+    type: double_array,
+    default_value: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    description: "Null space pose for each joint"
   }
 
   NullKp: {
     type: double_array,
     default_value: [0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02],
-    description: "Proportional gains for each joint, represented as a YAML string"
+    description: "Proportional gains for each joint - for null space control"
   }
   
   command_interfaces: {

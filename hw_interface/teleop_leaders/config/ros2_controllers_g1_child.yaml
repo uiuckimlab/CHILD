@@ -89,21 +89,71 @@
         - 0.000 # left_wrist_yaw_joint
         - 0.02 # left/gripper
         - 0.02 # right/gripper
+      nullspace_pose:
+        - 0.0 # right_hip_pitch_joint
+        - 0.0 # right_hip_roll_joint
+        - 0.0 # right_hip_yaw_joint
+        - 0.0 # right_knee_joint
+        - 0.0 # left_hip_pitch_joint
+        - 0.0 # left_hip_roll_joint
+        - 0.0 # left_hip_yaw_joint
+        - 0.0 # left_knee_joint
+        - 0.0 # right_shoulder_pitch_joint
+        - -0.6 # right_shoulder_roll_joint
+        - 0.0 # right_shoulder_yaw_joint
+        - 0.0 # right_elbow_joint
+        - 0.0 # right_wrist_roll_joint
+        - 0.0 # right_wrist_pitch_joint
+        - -0.4 # right_wrist_yaw_joint
+        - 0.0 # left_shoulder_pitch_joint
+        - 0.6 # left_shoulder_roll_joint
+        - 0.0 # left_shoulder_yaw_joint
+        - 0.0 # left_elbow_joint
+        - 0.0 # left_wrist_roll_joint
+        - 0.0 # left_wrist_pitch_joint
+        - 0.4 # left_wrist_yaw_joint
+        - 0.0 # left/gripper
+        - 0.0 # right/gripper
+      NullKp:
+        - 0.00 # right_hip_pitch_joint
+        - 0.00 # right_hip_roll_joint
+        - 0.00 # right_hip_yaw_joint
+        - 0.00 # right_knee_joint
+        - 0.00 # left_hip_pitch_joint
+        - 0.00 # left_hip_roll_joint
+        - 0.00 # left_hip_yaw_joint
+        - 0.00 # left_knee_joint
+        - 0.00 # right_shoulder_pitch_joint
+        - 0.3 # right_shoulder_roll_joint
+        - 0.00 # right_shoulder_yaw_joint
+        - 0.00 # right_elbow_joint
+        - 0.00 # right_wrist_roll_joint
+        - 0.00 # right_wrist_pitch_joint
+        - 0.08 # right_wrist_yaw_joint
+        - 0.00 # left_shoulder_pitch_joint
+        - 0.00 # left_shoulder_roll_joint
+        - 0.00 # left_shoulder_yaw_joint
+        - 0.00 # left_elbow_joint
+        - 0.00 # left_wrist_roll_joint
+        - 0.00 # left_wrist_pitch_joint
+        - 0.00 # left_wrist_yaw_joint
+        - 0.00 # left/gripper
+        - 0.00 # right/gripper
       limb_names:
         - right_leg
         - left_leg
         - right_arm
         - left_arm
       base_links:
-        - right_hip_pitch_link
+        - right_leg_base_link
         - left_leg_base_link
-        - right_shoulder_pitch_link
-        - left_shoulder_pitch_link
+        - right_arm_base_link
+        - left_arm_base_link
       end_effector_links:
-        - right_ankle_roll_link
+        - right_leg_link4
         - left_leg_link4
-        - right_rubber_hand
-        - left_leg_link4
+        - right_arm_link7
+        - left_arm_link7
       command_interfaces:
         - effort
       state_interfaces:

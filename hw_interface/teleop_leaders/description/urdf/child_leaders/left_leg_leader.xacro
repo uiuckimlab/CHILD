@@ -120,7 +120,7 @@
   </link> 
   
 
-  <joint name="left__hip_pitch_joint" type="revolute">
+  <joint name="left_hip_pitch_joint" type="revolute">
     <origin xyz="0 0.0105 0" rpy="0 0 0" />
     <parent link="left_leg_base_link" />
     <child link="left_leg_link1" />
@@ -128,7 +128,7 @@
     <limit lower="-2.5307" upper="2.8798" effort="0" velocity="0" />
   </joint>
   
-  <joint name="left__hip_roll_joint" type="revolute">
+  <joint name="left_hip_roll_joint" type="revolute">
     <origin xyz="0.00845606 0.0234 -0.01150819" rpy="0 -0.1749 0" />
     <parent link="left_leg_link1" />
     <child link="left_leg_link2" />
@@ -136,7 +136,7 @@
     <limit lower="-0.5236" upper="2.9671" effort="0" velocity="0" />
   </joint>
   
-  <joint name="left__hip_yaw_joint" type="revolute">
+  <joint name="left_hip_yaw_joint" type="revolute">
     <origin xyz="0.00486790801 0 -0.055854" rpy="0 0 0" />
     <parent link="left_leg_link2" />
     <child link="left_leg_link3" />
@@ -144,7 +144,7 @@
     <limit lower="-2.7576" upper="2.7576" effort="0" velocity="0" />
   </joint>
   
-  <joint name="left__knee_joint" type="revolute">
+  <joint name="left_knee_joint" type="revolute">
     <origin xyz="-0.0313092 0 -0.070936" rpy="0 0.1749 0" />
     <parent link="left_leg_link3" />
     <child link="left_leg_link4" />

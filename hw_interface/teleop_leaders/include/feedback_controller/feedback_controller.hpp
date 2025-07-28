@@ -38,6 +38,7 @@
  #include <kdl/jntarray.hpp>
  #include <kdl/tree.hpp>
  #include <kdl/treeidsolver_recursive_newton_euler.hpp>
+ #include <kdl/chainjnttojacsolver.hpp>
  #include "feedback_controller/visibility_control.h"
  #include "feedback_controller_parameters.hpp"
  #include <yaml-cpp/yaml.h>
@@ -103,7 +104,13 @@
   // Set null space position
   std::vector<double> null_joint_positions_;
   std::vector<double> null_joint_kp_;
-
+  
+  // base links for each limbs
+  std::vector<std::string> limb_names_;
+  std::vector<std::string> base_links_;
+  std::vector<std::string> end_effector_links_;
+  std::vector<KDL::Chain> limb_chains_;
+  std::vector<std::vector<int>> limb_joint_indices_;
 
   std::string formatVector(const std::vector<double> & vec);
 
