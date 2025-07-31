@@ -1,0 +1,19 @@
+<CycloneDDS xmlns="https://cdds.io/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://cdds.io/config https://raw.githubusercontent.com/eclipse-cyclonedds/cyclonedds/master/etc/cyclonedds.xsd">
+    <Domain Id="55">
+        <General>
+	    <Interfaces>
+	     <NetworkInterface name="wlan0" priority="default" multicast="default" />
+     </Interfaces>
+	     <AllowMulticast>false</AllowMulticast>
+        </General>
+        <Discovery>
+          <Peers>
+		        <Peer address="xx.x.xx.xxx"/>
+		        <Peer address="xx.x.xx.xxx"/>
+          </Peers>
+        </Discovery>       
+        <Internal>
+        	<!--MinimumSocketReceiveBufferSize>50MB</MinimumSocketReceiveBufferSize-->
+        </Internal>
+    </Domain>
+</CycloneDDS>

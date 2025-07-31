@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="g1_right_leg_leader">
+  <link name="right_leg_base_link">
+    <inertial>
+      <origin xyz="0.00000000 0.00319875 0.00118113" rpy="0 0 0" />
+      <mass value="0.01800000" />
+      <inertia ixx = "0.00000281"	ixy = "0.00000000"	ixz = "0.00000000" iyy = "0.00000233"	iyz = "0.00000011" izz = "0.00000158"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/g1_leg_base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/g1_leg_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>   
+	 
+	
+
+  <link name="right_leg_link1">
+    <inertial>
+      <origin xyz="0.01016296 0.00000000 -0.00475105" rpy="0 0 0" />
+      <mass value="0.00543603" />
+      <inertia ixx = "0.00000145"	ixy = "0.00000000"	ixz = "-0.00000050" iyy = "0.00000142"	iyz = "0.00000000" izz = "0.00000201"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/g1_leg_link_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/g1_leg_link_1.STL" />
+      </geometry>
+    </collision>
+  </link>  
+
+  <link name="right_leg_link2">
+    <inertial>
+      <origin xyz="-0.00272858 0.00000000 -0.02683543" rpy="0 0 0" />
+      <mass value=" 0.04516848" />
+      <inertia ixx = "0.00004938"	ixy = "0.00000000"	ixz = "0.00000294" iyy = "0.00005307"	iyz = "0.00000000" izz = "0.00000644"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/g1_leg_link_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/g1_leg_link_2.STL" />
+      </geometry>
+    </collision>
+  </link> 
+  
+
+
+  <link name="right_leg_link3">
+    <inertial>
+      <origin xyz="-0.01621315 0.00022419 -0.04019605" rpy="0 0 0" />
+      <mass value=" 0.06431956" />
+      <inertia ixx = "0.00014459"	ixy = "-0.00000042"	ixz = "0.00005475" iyy = "0.00016734"	iyz = "-0.00000097" izz = "0.00002911"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/g1_leg_link_3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/g1_leg_link_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="right_leg_link4">
+    <inertial>
+      <origin xyz="0.00853367 0.00001551 -0.11066266" rpy="0 0 0" />
+      <mass value="0.12585466" />
+      <inertia ixx = "0.00178709"	ixy = "0.00000002"	ixz = "-0.00015479" iyy = "0.00184613"	iyz = "-0.00000026" izz = "0.00007683"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/g1_leg_link_4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/g1_leg_link_4.STL" />
+      </geometry>
+    </collision>
+  </link> 
+  
+
+  <joint name="right_hip_pitch_joint" type="revolute">
+    <origin xyz="0 -0.0106 0" rpy="0 0 0" />
+    <parent link="right_leg_base_link" />
+    <child link="right_leg_link1" />
+    <axis xyz="0 1 0"/>
+    <limit lower="-2.5307" upper="2.8798" effort="0" velocity="1.0" />
+  </joint>
+  
+  <joint name="right_hip_roll_joint" type="revolute">
+    <origin xyz="0.006324517 -0.0234 -0.01280406227" rpy="0 -0.1749 0" />
+    <parent link="right_leg_link1" />
+    <child link="right_leg_link2" />
+    <axis xyz="1 0 0"/>
+    <limit lower="-2.9671" upper="0.5236" effort="0" velocity="1.0" />
+  </joint>
+  
+  <joint name="right_hip_yaw_joint" type="revolute">
+    <origin xyz="0.00486790801 0 -0.055854" rpy="0 0 0" />
+    <parent link="right_leg_link2" />
+    <child link="right_leg_link3" />
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.7576" upper="2.7576" effort="0" velocity="1.0" />
+  </joint>
+  
+  <joint name="right_knee_joint" type="revolute">
+    <origin xyz="-0.0313092 0 -0.070936" rpy="0 0.1749 0" />
+    <parent link="right_leg_link3" />
+    <child link="right_leg_link4" />
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.087267" upper="2.8798" effort="0" velocity="1.0" />
+  </joint>
+  
+</robot>

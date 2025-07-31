@@ -1,0 +1,53 @@
+mesh_dir: 'models/' # Default directory for meshes
+robot_cfg:
+  name: ur5
+  asset_cfg:
+    flip_visual_attachments: true
+    asset_dir: ${mesh_dir} # Directory for assets
+    urdf_path: 'models/ur5/ur5_robotiq85_gripper.urdf' # Path to the URDF file
+    xml_path: 'models/ur5/ur5_robotiq85_gripper.xml' # If you have xml file, specify the path here or just use urdf file here as well
+  ignore_collision_pairs:  # List of collision pairs to ignore, use * for partial match
+    - ['.*finger_link', '.*knuckle_link']
+    - ['.*finger_link', '.*finger_tip_link']
+  control_dt: 0.008 # Control loop frequency - 125Hz for PAPRAS
+  eef_type: 'parallel_gripper' # Type of end effector: 'hand', 'power_gripper', 'parallel_gripper'
+  limb_joint_names:
+    robot1: ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint', 'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint']
+  hand_joint_names:
+    robot1: ['robotiq_85_left_knuckle_joint']
+  max_joint_vel: 1.0 # Maximum joint velocity
+  end_effector_link:
+    robot1: 'end_effector_link' # End effector link name
+  named_poses:
+    #TODO: maybe read this info from srdf file, but conditionally. If not found, use this info
+    init: [0.0, -1.611, 1.2889, -1.5466, -2.093, 0.0, 0.0]
+  viewer_args:
+    mujoco:
+      azimuth: 172.7000000000001
+      distance: 2.6093796441399872
+      elevation: -28.550000000000004
+      lookat: [-0.21228273,  0.03259374, -0.11615278]
+    sapien:
+      width: 1510
+      height: 768
+      fovy: 1.57
+      near: 0.1
+      far: 100
+      pose:
+        pos: [ -0.94558, -0.128266, 1.77682 ]
+        quat: [ 0.937644, -0.000868946, 0.347589, 0.0023438 ]
+    isaacgym:
+      cam_pos: [1.41, -0.36, 0.58]
+      cam_target: [0.45, -0.23, 0.31]
+ik_cfg: # information for inverse kinematics. Use single arm model for each arm.
+  # the number of arms in the urdf file, the name of the robot does not matter, but order matters.
+  robot1:
+    # chain of joint names from base to end effector
+    joint_names: ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint', 'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint']
+    ee_link: end_effector_link
+    dt: 0.05
+    asset_dir: ${mesh_dir} # Directory for assets
+    urdf_path: 'models/ur5/ur5_robotiq85_gripper.urdf'
+    ik_damping: 0.075
+    eps: 1e-3
+    base_link: base_link # base_link in the original urdf file,not the base_link in the ik model

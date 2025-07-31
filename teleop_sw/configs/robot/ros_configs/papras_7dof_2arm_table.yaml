@@ -1,0 +1,70 @@
+control_dt: 0.008
+arm_lp_filter_alpha: 0.7
+hand_lp_filter_alpha: 0.5
+moveit:
+  namespace: 'followers'
+  arm_group_name: 'arm34'
+  hand_group_name: ''
+  num_planning_attempts: 30
+  planning_time: 20.0
+  max_velocity_scaling_factor: 0.1
+  max_acceleration_scaling_factor: 0.2
+robots:
+  robot1:
+    arm_control_topic: '/followers/arm3_controller/command'
+    arm_control_msg_type: 'JointTrajectory'
+    hand_control_topic: '/followers/gripper3_controller/command'
+    hand_control_msg_type: 'JointTrajectory'
+    # These joint names need to match the order of the joints for publishing commands
+    arm_joint_names: ['robot3/joint1', 'robot3/joint2', 'robot3/joint3', 'robot3/joint4', 'robot3/joint5', 'robot3/joint6', 'robot3/joint7']
+    hand_joint_names: ['robot3/gripper']
+    arm_state_sub_topic: '/followers/joint_states'
+    hand_state_sub_topic: '/followers/joint_states'
+    arm_state_sub_msg_type: 'JointState'
+    hand_state_sub_msg_type: 'JointState'
+
+  robot2:
+    arm_control_topic: '/followers/arm4_controller/command'
+    arm_control_msg_type: 'JointTrajectory'
+    hand_control_topic: '/followers/gripper4_controller/command'
+    hand_control_msg_type: 'JointTrajectory'
+    # These joint names need to match the order of the joints for publishing commands
+    arm_joint_names: ['robot4/joint1', 'robot4/joint2', 'robot4/joint3', 'robot4/joint4', 'robot4/joint5', 'robot4/joint6', 'robot4/joint7']
+    hand_joint_names: ['robot4/gripper']
+    arm_state_sub_topic: '/followers/joint_states'
+    hand_state_sub_topic: '/followers/joint_states'
+    arm_state_sub_msg_type: 'JointState'
+    hand_state_sub_msg_type: 'JointState'
+
+cameras: null
+#  top:
+#    serial_number: 'f0171772'
+#    rgb_resolution: [640, 360]
+#    depth_resolution: [640, 480]
+#    get_aligned: true
+#    depth_units: 0.0002500000118743628
+#  right:
+#    serial_number: '130322274055'#'102422071302'
+#    rgb_resolution: [480, 270]
+#    depth_resolution: [480, 270]
+#    get_aligned: false
+#    depth_units: 9.999999747378752e-05
+#  left:
+#    serial_number: '218722271580'#'103422071304'
+#    rgb_resolution: [480, 270]
+#    depth_resolution: [480, 270]
+#    get_aligned: false
+#    depth_units: 9.999999747378752e-05
+#  top:
+#    serial_number: '238722071363'
+#    rgb_resolution: [848, 480]
+#    depth_resolution: [848, 480]
+#  right:
+#    serial_number: '130322274055'#'102422071302'
+#    rgb_resolution: [480, 270]
+#    depth_resolution: [480, 270]
+#  left:
+#    serial_number: '218722271580'#'103422071304'
+#    rgb_resolution: [480, 270]
+#    depth_resolution: [480, 270]
+

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot name="papras_leaders" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<!-- Import PAPRAS Macros -->
+       <!--  <xacro:include filename="$(find papras_description)/urdf/papras_macros.xacro"/> -->
+  <xacro:include filename="$(find teleop_leaders)/description/urdf/leader_macros.xacro"/>
+  <xacro:include filename="$(find teleop_leaders)/description/urdf/g1_leader_macros.ros2_control.xacro"/>
+  
+  <xacro:include filename="$(find teleop_leaders)/description/urdf/child_leaders/g1_child.xacro"/>
+
+  <xacro:property name="systems" value="${['g1_leg', 'g1_leg', 'g1_arm', 'g1_arm', 'gripper','gripper']}"/>
+  <xacro:property name="system_prefix" value="${['', '','','','right','left']}"/>
+  <xacro:property name="joint_names" value="${[['right_hip_pitch_joint', 'right_hip_roll_joint', 'right_hip_yaw_joint', 'right_knee_joint'],['left_hip_pitch_joint', 'left_hip_roll_joint', 'left_hip_yaw_joint', 'left_knee_joint'],['right_shoulder_pitch_joint', 'right_shoulder_roll_joint', 'right_shoulder_yaw_joint', 'right_elbow_joint','right_wrist_roll_joint','right_wrist_pitch_joint','right_wrist_yaw_joint'],['left_shoulder_pitch_joint', 'left_shoulder_roll_joint', 'left_shoulder_yaw_joint', 'left_elbow_joint','left_wrist_roll_joint','left_wrist_pitch_joint','left_wrist_yaw_joint']]}"/>
+  <xacro:property name="arm_ids" value="${[1,2,3,4,3,4]}"/>
+  <xacro:property name="usb_port" value="/dev/ttyUSB0"/>
+  <xacro:property name="baud_rate" value="1000000"/>
+  <xacro:property name="yaml_file" value="$(find teleop_leaders)/config/g1_leaders_all_limbs.yaml"/>
+
+  <xacro:papras_leaders_ros2_control_hw systems="${systems}" system_prefix="${system_prefix}" arm_ids= "${arm_ids}" usb_port_location='${usb_port}' baud_rate_val="${baud_rate}" yaml_file="${yaml_file}" joint_names="${joint_names}"/>
+
+</robot>

@@ -1,0 +1,86 @@
+control_dt: 0.002
+arm_lp_filter_alpha: 0.5
+hand_lp_filter_alpha: 0.5
+moveit:
+  namespace: ''
+  arm_group_name: 'all'
+  hand_group_name: ''
+  num_planning_attempts: 30
+  planning_time: 20.0
+  max_velocity_scaling_factor: 0.001
+  max_acceleration_scaling_factor: 0.001
+  use_move_group_action: False
+unified_control: true
+robots:
+  all:
+    arm_control_topic: '/lowcmd'
+    arm_control_msg_type: 'LowCmd'
+    hand_control_topic: ''
+    hand_control_msg_type: ''
+    # These joint names need to match the order of the joints for publishing commands
+    arm_joint_names:
+      - 'left_hip_pitch_joint'
+      - 'left_hip_roll_joint'
+      - 'left_hip_yaw_joint'
+      - 'left_knee_joint'
+#      - 'left_ankle_pitch_joint'
+#      - 'left_ankle_roll_joint'
+      - 'right_hip_pitch_joint'
+      - 'right_hip_roll_joint'
+      - 'right_hip_yaw_joint'
+      - 'right_knee_joint'
+#      - 'right_ankle_pitch_joint'
+#      - 'right_ankle_roll_joint'
+      - 'left_shoulder_pitch_joint'
+      - 'left_shoulder_roll_joint'
+      - 'left_shoulder_yaw_joint'
+      - 'left_elbow_joint'
+      - 'left_wrist_roll_joint'
+      - 'left_wrist_pitch_joint'
+      - 'left_wrist_yaw_joint'
+      - 'right_shoulder_pitch_joint'
+      - 'right_shoulder_roll_joint'
+      - 'right_shoulder_yaw_joint'
+      - 'right_elbow_joint'
+      - 'right_wrist_roll_joint'
+      - 'right_wrist_pitch_joint'
+      - 'right_wrist_yaw_joint'
+    hand_joint_names: []
+    arm_state_sub_topic: '/lowstate'
+    hand_state_sub_topic: ''
+    arm_state_sub_msg_type: 'LowState'
+    hand_state_sub_msg_type: ''
+
+
+cameras: null
+#  top:
+#    serial_number: 'f0171772'
+#    rgb_resolution: [640, 360]
+#    depth_resolution: [640, 480]
+#    get_aligned: true
+#    depth_units: 0.0002500000118743628
+#  right:
+#    serial_number: '130322274055'#'102422071302'
+#    rgb_resolution: [480, 270]
+#    depth_resolution: [480, 270]
+#    get_aligned: false
+#    depth_units: 9.999999747378752e-05
+#  left:
+#    serial_number: '218722271580'#'103422071304'
+#    rgb_resolution: [480, 270]
+#    depth_resolution: [480, 270]
+#    get_aligned: false
+#    depth_units: 9.999999747378752e-05
+#  top:
+#    serial_number: '238722071363'
+#    rgb_resolution: [848, 480]
+#    depth_resolution: [848, 480]
+#  right:
+#    serial_number: '130322274055'#'102422071302'
+#    rgb_resolution: [480, 270]
+#    depth_resolution: [480, 270]
+#  left:
+#    serial_number: '218722271580'#'103422071304'
+#    rgb_resolution: [480, 270]
+#    depth_resolution: [480, 270]
+

@@ -1,0 +1,6 @@
+omegaconf
+pytransform3d
+scipy
+numpy==1.23.0
+tqdm
+termcolor

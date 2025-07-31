@@ -1,0 +1,10 @@
+<library path="feedback_controller">
+
+  <class name="feedback_controller/FeedbackController"
+         type="feedback_controller::FeedbackController"
+         base_class_type="controller_interface::ControllerInterface">
+    <description>
+           The PAPRAS ROBOT Dynamixel system interface.
+    </description>
+  </class>
+</library>

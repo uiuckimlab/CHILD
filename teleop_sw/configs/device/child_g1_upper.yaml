@@ -1,0 +1,47 @@
+type: child
+name: child_g1_upper
+teleop_dt: 0.02
+output_type: joint_pos # 'joint_pos' or 'eef_pose'
+
+# for eef-based mapping
+motion_scale: 1.0
+
+# for ROS-based controller
+leader_subscribe_topic: '/leaders/joint_states'
+limb_joint_names:
+  left_arm:
+    - 'left_shoulder_pitch_joint'
+    - 'left_shoulder_roll_joint'
+    - 'left_shoulder_yaw_joint'
+    - 'left_elbow_joint'
+    - 'left_wrist_roll_joint'
+    - 'left_wrist_pitch_joint'
+    - 'left_wrist_yaw_joint'
+  right_arm:
+    - 'right_shoulder_pitch_joint'
+    - 'right_shoulder_roll_joint'
+    - 'right_shoulder_yaw_joint'
+    - 'right_elbow_joint'
+    - 'right_wrist_roll_joint'
+    - 'right_wrist_pitch_joint'
+    - 'right_wrist_yaw_joint'
+end_effector_link: #
+  left_arm: 'left_wrist_roll_link'
+  right_arm: 'right_wrist_roll_link'
+
+hand_joint_names:  # No hand for this robot
+  left_arm: ['left/gripper']
+  right_arm: ['right/gripper']
+
+# leader limb -> follower limb
+direct_mapping: [] # default is empty, which means 1:1 mapping
+
+# for gello
+asset_cfg:
+  asset_dir: 'models/'
+  urdf_path: 'models/unitree_g1/g1_29dof.urdf'
+  xml_path: 'models/unitree_g1/g1_29dof.xml'
+direct_mapping_available_robots: ['g1_upper']
+hand_limits: # for gripper range mapping
+  left/gripper: [-2.1,0.1]
+  right/gripper: [1.8,2.8]

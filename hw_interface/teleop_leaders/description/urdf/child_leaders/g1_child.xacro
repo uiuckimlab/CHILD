@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="g1_Light_arm_leader">
+    <xacro:include filename="left_arm_leader.xacro" />
+    <xacro:include filename="right_arm_leader.xacro" />
+    <xacro:include filename="left_leg_leader.xacro" />
+    <xacro:include filename="right_leg_leader.xacro" />
+
+<!-- Link intertia values are incorrect for links 3 and 4 -->
+  <link name="torso_link">
+    <inertial>
+      <origin xyz="-0.00000241 0.00000895 0.00679686" rpy="0 0 0" />
+      <mass value="0.69622769" />
+      <inertia ixx = "0.00785059"	ixy = "0.00000220"	ixz = "0.00001212" iyy = "0.00639537"	iyz = "-0.00002276" izz = "0.00283396"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/torso.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/torso.STL" />
+      </geometry>
+    </collision>
+  </link>  
+ 
+  <joint name="joint1" type="fixed">
+    <origin xyz="0.000125 -0.067 0.0308" rpy="0 0 0" />
+    <parent link="torso_link" />
+    <child link="right_arm_base_link" />
+  </joint>
+  
+  <joint name="joint2" type="fixed">
+    <origin xyz="0.000125 0.067 0.0306" rpy="0 0 0" />
+    <parent link="torso_link" />
+    <child link="left_arm_base_link" />
+  </joint>
+  
+  <joint name="joint3" type="fixed">
+    <origin xyz="0.000125 -0.050 -0.1164" rpy="0 0 0" />
+    <parent link="torso_link" />
+    <child link="right_leg_base_link" />
+  </joint>
+  
+  <joint name="joint4" type="fixed">
+    <origin xyz="0.000125 0.050 -0.1226" rpy="0 0 0" />
+    <parent link="torso_link" />
+    <child link="left_leg_base_link" />
+  </joint>
+</robot>
