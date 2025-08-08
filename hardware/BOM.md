@@ -50,7 +50,10 @@ Screws and wires for leader assembly (included in XL330 servo box):
 - [G1_Leg_Leader_knee_jnt_limit.STL](./3D_print_parts/G1_Leg_Leader_knee_jnt_limit.STL) `x2`
 - [G1_Leg_Leader_link_2.STL](./3D_print_parts/G1_Leg_Leader_link_2.STL) `x2`
 - [G1_Leg_Leader_link_3.STL](./3D_print_parts/G1_Leg_Leader_link_3.STL) `x2`
-- [G1_Leg_Leader_link_4.STL](./3D_print_parts/G1_Leg_Leader_link_4.STL) `x2`
+- [G1_Leg_Leader_link_4.1.STL](./3D_print_parts/G1_Leg_Leader_link_4.1.STL) `x2`
+- [G1_Leg_Leader_link_4.2.STL](./3D_print_parts/G1_Leg_Leader_link_4.2.STL) `x2`
+- [G1_Leg_Leader_L_link1.STL](./3D_print_parts/G1_Leg_Leader_L_link1.STL)
+- [G1_Leg_Leader_R_link1.STL](./3D_print_parts/G1_Leg_Leader_R_link1.STL)
 - [G1_Arm_Leader_L_link_1.STL](./3D_print_parts/G1_Arm_Leader_L_link_1.STL)
 - [G1_Arm_Leader_L_link_2.STL](./3D_print_parts/G1_Arm_Leader_L_link_2.STL)
 - [G1_Arm_Leader_L_link_3.STL](./3D_print_parts/G1_Arm_Leader_L_link_3.STL)
@@ -63,8 +66,6 @@ Screws and wires for leader assembly (included in XL330 servo box):
 - [G1_Arm_Leader_R_link_4.STL](./3D_print_parts/G1_Arm_Leader_R_link_4.STL)
 - [G1_Arm_Leader_R_link_5.STL](./3D_print_parts/G1_Arm_Leader_R_link_5.STL)
 - [G1_Arm_Leader_R_link_6.STL](./3D_print_parts/G1_Arm_Leader_R_link_6.STL)
-- [G1_Leg_Leader_L_link1.STL](./3D_print_parts/G1_Leg_Leader_L_link1.STL)
-- [G1_Leg_Leader_R_link1.STL](./3D_print_parts/G1_Leg_Leader_R_link1.STL)
 
 ## Monitor Stand Adapter
 - [Monitor_stand_attachment.STL](./3D_print_parts/Monitor_stand_attachment.STL)
