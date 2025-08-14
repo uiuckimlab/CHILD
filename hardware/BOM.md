@@ -9,6 +9,7 @@
 | :------------- | :-------------: | :-------------:            | :-------------|   :-------------|
 | XL330-M288-T                 | 22 |  26.29         | 578.38                   | [ROBOTIS](https://www.robotis.us/dynamixel-xl330-m288-t/)|
 | XL330-M077-T                 | 2  |  26.29         | 52.58                    | [ROBOTIS](https://www.robotis.us/dynamixel-xl330-m077-t/)|
+| FPX330-H101 4pcs Set         | 3  |  11.27         | 33.81                    | [ROBOTIS](https://www.robotis.us/fpx330-h101-4pcs-set/)|
 | Raspberry Pi 5a              | 1  |  80            | 80                       | [Digikey](https://www.digikey.com/en/products/detail/raspberry-pi/SC1112/21658257)|
 | Raspberry Pi 5 active cooler | 1  |  9.50          | 9.50                     | [Sparkfun](https://www.sparkfun.com/raspberry-pi-active-cooler.html?src=raspberrypi)|
 | Buck converter               | 1  |  11.00         | 11.00                    | [Amazon](https://a.co/d/34K1G3W)|
@@ -24,7 +25,7 @@
 | M2x6 screw                   | 24 |  0.0878        | 2.11                     | [Mcmaster](https://www.mcmaster.com/91292a831/) |
 | Female jumper wires          | 6  |  0.0582        | 0.46                     | [Amazon](https://a.co/d/gtiBsbT)|
 | PLA Filament                 | 1.1kg  |  -         | 25.3                     | |
-|                              |    |  **Total**     | 964.32                  | |
+|                              |    |  **Total**     | 998.13                  | |
 ### Miscellaneous
 - Power wires
 
